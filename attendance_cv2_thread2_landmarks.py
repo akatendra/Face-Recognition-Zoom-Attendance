@@ -103,5 +103,49 @@ for (top, right, bottom, left), face_encoding in zip(face_locations,
                  (255, 0, 255), cv.FILLED)
     cv.putText(zoom_image, name, (left - d_left + 5, bottom + 20),
                cv.FONT_HERSHEY_COMPLEX, 0.5, (255, 255, 255), 1)
+# Draw landmarks on image
+face_landmarks_list = encoding_thread.value[1]
+# Green color in BGR
+color = (0, 255, 0)
+# Copy zoom_image for landmarks
+zoom_image_lines = copy.copy(zoom_image)
+zoom_image_circles = copy.copy(zoom_image)
 
+# Line thickness of 9 px
+thickness = 1
+for face_landmarks in face_landmarks_list:
+
+    # Print the location of each facial feature in this image
+    for facial_feature in face_landmarks.keys():
+        print(
+            f'The {facial_feature} in this face has the following points: {face_landmarks[facial_feature]}')
+
+    # Let's trace out each facial feature in the image with a line!
+    for facial_feature in face_landmarks.keys():
+        start_point = None
+        for point in face_landmarks[facial_feature]:
+            end_point = point
+            if start_point is not None:
+                cv.line(zoom_image_lines, start_point, end_point, color,
+                        thickness)
+            start_point = end_point
+
+
+    # Let's trace out each facial feature in the image with a point as circle!
+    for facial_feature in face_landmarks.keys():
+        for point in face_landmarks[facial_feature]:
+            # Draw a green circle with zero radius and -1 for filled circle
+            cv.circle(zoom_image_circles, point, radius=2,
+                      color=(0, 255, 0), thickness=-1)
+
+
+    # # Let's trace out each facial feature in the image with a pixel point!
+    # for facial_feature in face_landmarks.keys():
+    #     for point in face_landmarks[facial_feature]:
+    #         # Draw a green pixel
+    #         zoom_image_pixels[point[0], point[1]] = [0, 255, 0]
+
+cv.imshow('Zoom with landmarks in lines', zoom_image_lines)
+cv.imshow('Zoom with landmarks in circles', zoom_image_circles)
+cv.imshow('Zoom', zoom_image)
 cv.waitKey(0)
