@@ -1,4 +1,4 @@
-# FaceRecognitionZoomAttendance #
+# Face Recognition Zoom Attendance #
 Marking attendees at a ZOOM conference via face recognition.
 ***
 ### The project is built on libraries: ###
