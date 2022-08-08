@@ -1,0 +1,2 @@
+def fr():
+    return None
