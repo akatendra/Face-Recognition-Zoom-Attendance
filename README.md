@@ -17,8 +17,8 @@ Folders:
 1. class_got
 >Folder with reference images of class members. The folder also contains files: 
 >>1. With information about recognizing faces of class participants **face_encodings.npy**
->>2. File with the names of class participants (names are taken from the names of the reference images)
->>3. xlsx-file in which the presence of ZOOM conference is noted.
+>>2. File with the names of class participants (names are taken from the names of the reference images) **names.npy**
+>>3. xlsx-file in which the presence of ZOOM conference is noted  **attendance.xlsx**
 2. zoom_got
 >In this folder, place a screenshot of the ZOOM conference where you want to mark the attendees
 3. zoom_got_archive
