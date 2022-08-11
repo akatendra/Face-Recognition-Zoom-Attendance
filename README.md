@@ -1,5 +1,7 @@
 # Face Recognition Zoom Attendance #
 Marking attendees at a ZOOM conference via face recognition.
+
+This is my final project at the end of the Python Development course at Beetroot Academy.
 ***
 ### The project is built on libraries: ###
 Face recognition
